@@ -1,3 +1,7 @@
+'''
+摂動によって得られた近傍解で暫定解（初期解）を一回だけ更新する
+'''
+
 import sys
 import numpy as np
 #import random
