@@ -59,6 +59,7 @@ for i in range(P):
         tmp = ans[i,k+1,0+k]
         ans[i,k+1,0+k] = ans[i,k+1,1+k]
         ans[i,k+1,1+k] = tmp
+
         # 目的関数の計算
         sum[l] = A[ans[i,k+1,0]] + B[ans[i,k+1,1]] + C[ans[i,k+1,2]] + D[ans[i,k+1,3]]
         print("P", i, k+1, "=", '(', ans[i,k+1,0],ans[i,k+1,1],ans[i,k+1,2],ans[i,k+1,3], ') Ans =', sum[l])
@@ -76,6 +77,9 @@ min = np.where(sum == min)
 
 for m in min[0]:
     trns = int(m/4)
+    if ans[trns, m%4] == ans_old:
+        continue
     # 割り算の結果が int じゃないので変換する
     print("(", ans[trns, m%4, 0], ans[trns, m%4, 1], ans[trns, m%4, 2], ans[trns, m%4, 3], ")")
+    ans_old = ans[trns, m%4]
 
