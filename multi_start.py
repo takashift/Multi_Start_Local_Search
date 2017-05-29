@@ -19,8 +19,11 @@ list = range(N)
 num = np.arange(4)
 index = np.zeros(4, dtype = np.int_)
 ans = np.zeros((P, 4, 4), dtype = np.int_)
+ans_old = np.zeros((N, 4, 4), dtype = np.int_)
 sum = np.zeros(P*4, dtype = np.int_)
 l = 0
+h = 0
+same = False
 
 # 重複無しでリストからランダムに値を取得
 n = np.random.choice(list, P, replace = False)
@@ -77,9 +80,13 @@ min = np.where(sum == min)
 
 for m in min[0]:
     trns = int(m/4)
-    if ans[trns, m%4] == ans_old:
+    # 一致しているものがあればパス
+    for old in ans_old:
+        if (ans[trns, m%4] == old).all():
+            same = True
+    if same == True:
         continue
     # 割り算の結果が int じゃないので変換する
     print("(", ans[trns, m%4, 0], ans[trns, m%4, 1], ans[trns, m%4, 2], ans[trns, m%4, 3], ")")
-    ans_old = ans[trns, m%4]
-
+    ans_old[h] = ans[trns, m%4]
+    h += 1
