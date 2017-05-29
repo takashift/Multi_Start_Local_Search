@@ -11,7 +11,7 @@ list = range(N)
 
 num = np.arange(4)
 index = np.zeros(4, dtype = np.int_)
-ans = np.zeros((10, 3, 4), dtype = np.int_)
+ans = np.zeros((10, 4, 4), dtype = np.int_)
 
 # 重複無しでリストから値を取得
 n = np.random.choice(list, P, replace = False)
@@ -38,7 +38,16 @@ for i in range(P):
             num_tmp = np.delete(num_tmp, index[j])
         # print(j, num_tmp)
 
-    print("P",  "=", '(', ans[i,0,0],ans[i,0,1],ans[i,0,2],ans[i,0,3], ')')
+    print("P", i,  "=", '(', ans[i,0,0],ans[i,0,1],ans[i,0,2],ans[i,0,3], ')')
     # if ans[0] == 1:
 
+    for k in range(3):
+        ans[i,k+1] = ans[i,0]
+        tmp = ans[i,k+1,0+k]
+        ans[i,k+1,0+k] = ans[i,k+1,1+k]
+        ans[i,k+1,1+k] = tmp
+        print("P", i, k+1, "=", '(', ans[i,k+1,0],ans[i,k+1,1],ans[i,k+1,2],ans[i,k+1,3], ')')
 
+    print()
+
+    
