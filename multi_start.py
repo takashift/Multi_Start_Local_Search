@@ -5,7 +5,7 @@
 import sys
 import numpy as np
 
-# 初期解(引数)
+# 初期解の数(引数)
 P = int(sys.argv[1])
 # 順列の数
 N = 24
@@ -80,6 +80,7 @@ for m in min[0]:
         if (ans[trns, m%4] == old).all():
             same = True
     if same == True:
+        same = False
         continue
     # 割り算の結果が int じゃないので変換する
     print("(", ans[trns, m%4, 0], ans[trns, m%4, 1], ans[trns, m%4, 2], ans[trns, m%4, 3], ")")
