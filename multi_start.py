@@ -74,6 +74,7 @@ print("min =", min)
 min = np.where(sum == min)
 
 for m in min[0]:
+    # 割り算の結果が int じゃないので変換する
     trns = int(m/4)
     # 一致しているものがあればパス
     for old in ans_old:
@@ -82,7 +83,7 @@ for m in min[0]:
     if same == True:
         same = False
         continue
-    # 割り算の結果が int じゃないので変換する
+
     print("(", ans[trns, m%4, 0], ans[trns, m%4, 1], ans[trns, m%4, 2], ans[trns, m%4, 3], ")")
     ans_old[h] = ans[trns, m%4]
     h += 1
